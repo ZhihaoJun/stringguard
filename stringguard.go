@@ -9,7 +9,7 @@ type Guard struct {
 	err error
 }
 
-func New() *Guard {
+func NewGuard() *Guard {
 	return &Guard{
 		err: nil,
 	}
@@ -46,7 +46,7 @@ func (g *Guard) MaxLen(name, str string, max int) string {
 		return str
 	}
 	if len(str) > max {
-		g.err = NewMaxIntError(name, max)
+		g.err = NewMaxLenError(name, max)
 	}
 	return str
 }
@@ -56,7 +56,7 @@ func (g *Guard) MinLen(name, str string, min int) string {
 		return str
 	}
 	if len(str) < min {
-		g.err = NewMinIntError(name, min)
+		g.err = NewMinLenError(name, min)
 	}
 	return str
 }
