@@ -20,7 +20,7 @@ func (ge *GuardError) Name() string {
 }
 
 func (ge *GuardError) Error() string {
-	return fmt.Sprintf("%s:fail", ge.name)
+	return fmt.Sprintf("%s:invalid", ge.name)
 }
 
 type NotEmptyError struct {
