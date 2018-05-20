@@ -19,7 +19,11 @@ if err != nil {
 
 ## how to extend
 ``` golang
-func (g *stringguard.Guard) YourRulesName() {
+type MyGuard struct {
+  *stringguard.Guard
+}
+
+func (g *MyGuard) YourRulesName() {
   // first check err
   if g.err != nil {
     return
