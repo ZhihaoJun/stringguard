@@ -1,4 +1,4 @@
-package stringguard // import "zhihaojun.com/stringguard"
+package stringguard // import "github.com/zhihaojun/stringguard"
 
 import "regexp"
 import "strconv"

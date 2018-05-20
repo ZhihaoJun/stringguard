@@ -1,4 +1,4 @@
-package stringguard
+package stringguard // import "github.com/zhihaojun/stringguard"
 
 import (
 	"fmt"

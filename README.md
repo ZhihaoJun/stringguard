@@ -3,10 +3,10 @@ string content format validation
 can be used for form or function input validation
 
 ## usage
-* clone repo into `$GOPATH/zhihaojun.com/stringguard`
+* clone repo into `$GOPATH/github.com/zhihaojun/stringguard`
 
 ``` golang
-import "zhihaojun.com/stringguard"
+import "github.com/zhihaojun/stringguard"
 
 guard := stringguard.NewGuard()
 name := guard.MaxLen("name", c.FormValue("name"), 10)
