@@ -21,6 +21,8 @@ if err != nil {
 ``` golang
 type MyGuard struct {
   *stringguard.Guard
+
+  err error
 }
 
 func (g *MyGuard) YourRulesName() {
@@ -30,5 +32,12 @@ func (g *MyGuard) YourRulesName() {
   }
   // rule check and set g.err properly
   // you can check out for stringguard.go to see some implementation
+}
+
+func (g *MyGuard) Err() error {
+  if g.err != nil {
+    return g.err
+  }
+  return g.Guard.Err()
 }
 ```
