@@ -21,6 +21,25 @@ func TestInt(t *testing.T) {
 	}
 }
 
+func TestInt64(t *testing.T) {
+	g := NewGuard()
+	i := g.Int64("test", "123")
+	if i != 123 {
+		t.Error("[int convert error]")
+	}
+	i = g.Int64("test1", "abd")
+	err := g.Err()
+	if err == nil {
+		t.Error("[int guard test failed]")
+	}
+	switch terr := err.(type) {
+	case *Int64Error:
+		_ = terr
+	default:
+		t.Error("[int64 guard error type wrong]")
+	}
+}
+
 func TestMaxLen(t *testing.T) {
 	g := NewGuard()
 	g.MaxLen("test", "123", 3)

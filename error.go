@@ -91,6 +91,16 @@ func NewIntError(name string) *IntError {
 	}
 }
 
+type Int64Error struct {
+	*GuardError
+}
+
+func NewInt64Error(name string) *Int64Error {
+	return &Int64Error{
+		GuardError: NewGuardError(name),
+	}
+}
+
 type MaxIntError struct {
 	*GuardError
 	max int
@@ -107,6 +117,22 @@ func (mie *MaxIntError) Max() int {
 	return mie.max
 }
 
+type MaxInt64Error struct {
+	*GuardError
+	max int64
+}
+
+func NewMaxInt64Error(name string, max int64) *MaxInt64Error {
+	return &MaxInt64Error{
+		GuardError: NewGuardError(name),
+		max:        max,
+	}
+}
+
+func (mie *MaxInt64Error) Max() int64 {
+	return mie.max
+}
+
 type MinIntError struct {
 	*GuardError
 	min int
@@ -120,6 +146,22 @@ func NewMinIntError(name string, min int) *MinIntError {
 }
 
 func (mie *MinIntError) Min() int {
+	return mie.min
+}
+
+type MinInt64Error struct {
+	*GuardError
+	min int64
+}
+
+func NewMinInt64Error(name string, min int64) *MinInt64Error {
+	return &MinInt64Error{
+		GuardError: NewGuardError(name),
+		min:        min,
+	}
+}
+
+func (mie *MinInt64Error) Min() int64 {
 	return mie.min
 }
 

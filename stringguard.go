@@ -73,6 +73,48 @@ func (g *Guard) Int(name, str string) int {
 	return intValue
 }
 
+func (g *Guard) Int64(name, str string) int64 {
+	if g.err != nil {
+		return 0
+	}
+
+	intValue, err := strconv.ParseInt(str, 10, 64)
+	if err != nil {
+		g.err = NewInt64Error(name)
+	}
+	return intValue
+}
+
+func (g *Guard) MaxInt64(name, str string, max int64) int64 {
+	if g.err != nil {
+		return 0
+	}
+
+	intValue, err := strconv.ParseInt(str, 10, 64)
+	if err != nil {
+		g.err = NewIntError(name)
+	}
+	if intValue > max {
+		g.err = NewMaxInt64Error(name, max)
+	}
+	return intValue
+}
+
+func (g *Guard) MinInt64(name, str string, min int64) int64 {
+	if g.err != nil {
+		return 0
+	}
+
+	intValue, err := strconv.ParseInt(str, 10, 64)
+	if err != nil {
+		g.err = NewIntError(name)
+	}
+	if intValue < min {
+		g.err = NewMinInt64Error(name, min)
+	}
+	return intValue
+}
+
 func (g *Guard) MaxInt(name, str string, max int) int {
 	if g.err != nil {
 		return 0
